@@ -30,25 +30,44 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (never commit secrets)
 .env*
+!.env.example
 
 # vercel
 .vercel
-
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 local-*
-.claude
-.z-ai-config
+
+# local database
+/db/
+
+# zscripts (sandbox-only helper scripts)
+/.zscripts/
+
+# local downloads (screenshots, etc.)
+/download/
+
+# tests (sandbox runtime tests, not part of the app)
+/tests/
+
+# examples (sandbox-only)
+/examples/
+
+# mini-services (sandbox-only)
+/mini-services/
+
+# logs
 *.log
 dev.log
 dev.out.log
-test
-prompt
-
 server.log
-# Skills directory
-/skills/
+
+# claude / z-ai config
+.claude
+.z-ai-config
+prompt
+test
