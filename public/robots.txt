@@ -1,0 +1,7 @@
+# robots.txt for Camel Calculator
+User-agent: *
+Allow: /
+
+# Block nothing. The whole site is public and crawlable.
+
+Sitemap: https://camelcalculator.example/sitemap.xml

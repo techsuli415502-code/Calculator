@@ -1,0 +1,42 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FBEFD9"/>
+      <stop offset="100%" stop-color="#F4E0BD"/>
+    </linearGradient>
+    <linearGradient id="dune" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E0B98A"/>
+      <stop offset="100%" stop-color="#C8965D"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Dunes -->
+  <path d="M 0 540 Q 300 480 600 520 Q 900 560 1200 500 L 1200 630 L 0 630 Z" fill="url(#dune)"/>
+  <path d="M 0 580 Q 400 540 800 580 Q 1000 600 1200 560 L 1200 630 L 0 630 Z" fill="#B07A45" opacity="0.7"/>
+  <!-- Sun -->
+  <circle cx="950" cy="180" r="60" fill="#F2B454" opacity="0.9"/>
+
+  <!-- Camel -->
+  <g transform="translate(120 280) scale(2.2)" fill="#5C3A1E">
+    <rect x="68" y="130" width="14" height="50" rx="5"/>
+    <rect x="92" y="130" width="14" height="50" rx="5" opacity="0.85"/>
+    <rect x="150" y="130" width="14" height="50" rx="5"/>
+    <rect x="174" y="130" width="14" height="50" rx="5" opacity="0.85"/>
+    <ellipse cx="120" cy="125" rx="65" ry="32"/>
+    <path d="M 90 100 Q 110 60 130 95 Q 145 70 160 100 L 160 125 L 90 125 Z"/>
+    <path d="M 155 110 Q 180 100 185 70 Q 187 55 178 45 L 168 45 Q 173 55 172 65 Q 168 85 152 100 Z"/>
+    <ellipse cx="178" cy="45" rx="22" ry="16"/>
+    <ellipse cx="170" cy="42" rx="6" ry="5"/>
+    <path d="M 168 30 L 172 22 L 178 32 Z"/>
+    <circle cx="186" cy="42" r="2.5" fill="#fff"/>
+    <path d="M 55 120 Q 40 125 38 140 Q 40 145 44 144 Q 46 134 58 130 Z"/>
+  </g>
+  <circle cx="186" cy="42" r="2" fill="#2A1D12" transform="translate(120 280) scale(2.2)"/>
+
+  <!-- Text -->
+  <g font-family="Georgia, serif" fill="#3A2817">
+    <text x="640" y="290" font-size="78" font-weight="700">Camel Calculator</text>
+    <text x="640" y="350" font-size="32" font-weight="400" fill="#6B4A2E">How many camels are you worth?</text>
+    <text x="640" y="420" font-size="22" fill="#7A5A3E">A free, fun online camel value test.</text>
+  </g>
+</svg>
