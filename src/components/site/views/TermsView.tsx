@@ -137,6 +137,7 @@ export function TermsView() {
         <p>
           If you have any question about these terms, please use the{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("contact")}
           >
@@ -145,6 +146,7 @@ export function TermsView() {
           page. We are happy to explain any part of these rules. You can
           also read our{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("privacy")}
           >

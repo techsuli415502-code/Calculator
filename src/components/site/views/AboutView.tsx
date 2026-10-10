@@ -73,6 +73,7 @@ export function AboutView() {
         <p>
           You can read the full breakdown on the{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("how-it-works")}
           >
@@ -131,6 +132,7 @@ export function AboutView() {
         <p>
           You can read more about how the calculator works on the{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("how-it-works")}
           >
@@ -138,6 +140,7 @@ export function AboutView() {
           </button>{" "}
           page, or check the{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("faq")}
           >
@@ -145,6 +148,7 @@ export function AboutView() {
           </button>{" "}
           for quick answers. If you want to send feedback, please use the{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("contact")}
           >

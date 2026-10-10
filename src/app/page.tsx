@@ -146,6 +146,21 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          const main = document.getElementById("main");
+          if (main) {
+            main.setAttribute("tabindex", "-1");
+            main.focus();
+            main.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }}
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground focus:shadow-lg"
+      >
+        Skip to main content
+      </button>
       <Header />
       <main className="flex-1" id="main">
         {view === "home" && <HomeView />}

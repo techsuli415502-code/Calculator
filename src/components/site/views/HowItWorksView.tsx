@@ -133,6 +133,7 @@ export function HowItWorksView() {
           serious way. Share it as a joke, laugh about it, and move on. For
           the full rules of use, see our{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("terms")}
           >
@@ -153,6 +154,7 @@ export function HowItWorksView() {
 
       <div className="text-center pt-2">
         <button
+          type="button"
           onClick={() => setView("home")}
           className="inline-flex h-11 items-center justify-center rounded-lg bg-primary px-6 text-base font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90"
         >

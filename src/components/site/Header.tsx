@@ -32,6 +32,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/65">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <button
+          type="button"
           onClick={() => handleNav("home")}
           className="flex items-center gap-2.5 transition-opacity hover:opacity-90"
           aria-label="Camel Calculator home"
@@ -47,6 +48,7 @@ export function Header() {
           {NAV.map((item) => (
             <button
               key={item.id}
+              type="button"
               onClick={() => handleNav(item.id)}
               aria-current={view === item.id ? "page" : undefined}
               className={cn(
@@ -78,9 +80,11 @@ export function Header() {
 
         {/* Mobile toggle */}
         <button
+          type="button"
           className="inline-flex md:hidden h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-accent"
-          aria-label="Open menu"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
           onClick={() => setMobileOpen((o) => !o)}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -89,11 +93,12 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-background">
+        <div id="mobile-menu" className="md:hidden border-t border-border bg-background">
           <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3" aria-label="Mobile navigation">
             {NAV.map((item) => (
               <button
                 key={item.id}
+                type="button"
                 onClick={() => handleNav(item.id)}
                 className={cn(
                   "rounded-md px-3 py-2.5 text-left text-base font-medium transition-colors",
@@ -106,6 +111,7 @@ export function Header() {
               </button>
             ))}
             <button
+              type="button"
               onClick={() => {
                 setMobileOpen(false);
                 setView("home");

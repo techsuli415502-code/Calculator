@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
@@ -77,6 +77,22 @@ export const metadata: Metadata = {
     },
   },
   category: "entertainment",
+  applicationName: "Camel Calculator",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FBF7F0" },
+    { media: "(prefers-color-scheme: dark)", color: "#3A2817" },
+  ],
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

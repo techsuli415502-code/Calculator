@@ -50,6 +50,7 @@ export function Footer() {
               {FOOTER_NAV.map((item) => (
                 <li key={item.id}>
                   <button
+                    type="button"
                     onClick={() => go(item.id)}
                     className="text-muted-foreground hover:text-primary hover:underline text-left"
                   >
@@ -77,13 +78,13 @@ export function Footer() {
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground">
           <p>(c) {year} Camel Calculator. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
-            <button onClick={() => go("privacy")} className="hover:text-primary hover:underline">
+            <button type="button" onClick={() => go("privacy")} className="hover:text-primary hover:underline">
               Privacy
             </button>
-            <button onClick={() => go("terms")} className="hover:text-primary hover:underline">
+            <button type="button" onClick={() => go("terms")} className="hover:text-primary hover:underline">
               Terms
             </button>
-            <button onClick={() => go("contact")} className="hover:text-primary hover:underline">
+            <button type="button" onClick={() => go("contact")} className="hover:text-primary hover:underline">
               Contact
             </button>
           </div>

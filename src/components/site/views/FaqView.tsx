@@ -102,6 +102,7 @@ export function FaqView() {
           Here are answers to the questions people ask most about the camel
           calculator. If your question is not on this list, please use the{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("contact")}
           >
@@ -130,6 +131,7 @@ export function FaqView() {
         <p>
           If you want to know more about how the tool works, see our{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("how-it-works")}
           >
@@ -138,6 +140,7 @@ export function FaqView() {
           page. If you have feedback, a bug to report, or a question that is
           not covered here, please reach out through the{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("contact")}
           >

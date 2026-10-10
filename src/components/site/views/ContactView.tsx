@@ -134,6 +134,7 @@ export function ContactView() {
                       techsuli415502@gmail.com.
                     </p>
                     <button
+                      type="button"
                       onClick={() => setSent(false)}
                       className="mt-3 inline-flex h-9 items-center rounded-md border border-border bg-card px-4 text-sm font-medium hover:bg-accent"
                     >

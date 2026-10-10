@@ -164,6 +164,7 @@ export function PrivacyView() {
         <p>
           For the rules of use, please also read our{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("terms")}
           >
@@ -171,6 +172,7 @@ export function PrivacyView() {
           </button>
           . For how the tool works, see our{" "}
           <button
+            type="button"
             className="font-medium text-primary hover:underline"
             onClick={() => setView("how-it-works")}
           >

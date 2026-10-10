@@ -144,8 +144,9 @@ export function HomeView() {
             The whole flow takes about a minute from start to finish. You can
             read more about the steps on our{" "}
             <button
-              className="font-medium text-primary hover:underline"
-              onClick={() => setView("how-it-works")}
+            type="button"
+            className="font-medium text-primary hover:underline"
+            onClick={() => setView("how-it-works")}
             >
               How It Works
             </button>{" "}
@@ -217,8 +218,9 @@ export function HomeView() {
             Please treat the result as a joke, not as a real value test. You can
             read our{" "}
             <button
-              className="font-medium text-primary hover:underline"
-              onClick={() => setView("terms")}
+            type="button"
+            className="font-medium text-primary hover:underline"
+            onClick={() => setView("terms")}
             >
               Terms of Use
             </button>{" "}
@@ -233,8 +235,9 @@ export function HomeView() {
           intro="A few quick questions and answers. For the full list, see our"
           introTail={
             <button
-              className="font-medium text-primary hover:underline"
-              onClick={() => setView("faq")}
+            type="button"
+            className="font-medium text-primary hover:underline"
+            onClick={() => setView("faq")}
             >
               FAQ page
             </button>
@@ -267,6 +270,7 @@ export function HomeView() {
             stored. Just answer the questions and get your fun camel value.
           </p>
           <button
+            type="button"
             onClick={() => {
               const el = document.getElementById("calculator");
               if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
