@@ -61,8 +61,25 @@ export function ContactView() {
       return;
     }
     setSubmitting(true);
-    // Simulated submission. There is no back end that stores contact form data,
-    // so we just show a success state and clear the form.
+
+    // Build a mailto: link that opens the user's own email client with the
+    // message pre-filled. This way the form actually does something useful
+    // (the user can review and send the email from their own account) and we
+    // do not store any contact form data on our servers.
+    const subject = `Camel Calculator contact from ${name.trim()}`;
+    const body = [
+      `Name: ${name.trim()}`,
+      `Email: ${email.trim()}`,
+      ``,
+      `Message:`,
+      message.trim(),
+    ].join("\n");
+
+    const mailtoUrl = `mailto:techsuli415502@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // Give the UI a brief loading state, then open the email client.
     setTimeout(() => {
       setSubmitting(false);
       setSent(true);
@@ -70,10 +87,22 @@ export function ContactView() {
       setEmail("");
       setMessage("");
       toast({
-        title: "Message sent",
-        description: "Thanks for reaching out. We will get back to you soon.",
+        title: "Opening your email app",
+        description:
+          "Your message is ready in your email client. Press send there to deliver it to us.",
       });
-    }, 600);
+      // Open mailto in a new context so the browser does not navigate away
+      // from the page. Use window.location.href which works on most setups.
+      try {
+        window.location.href = mailtoUrl;
+      } catch {
+        // If the browser blocks the mailto: navigation, fall back to a hint
+        toast({
+          title: "Open your email app",
+          description: `Send your message to techsuli415502@gmail.com`,
+        });
+      }
+    }, 400);
   };
 
   return (
@@ -97,16 +126,18 @@ export function ContactView() {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-medium text-foreground">Your message was sent.</p>
+                    <p className="font-medium text-foreground">Your email is ready to send.</p>
                     <p className="mt-1 text-muted-foreground">
-                      Thanks for reaching out. We will reply to your email as
-                      soon as we can, usually within a few days.
+                      Your email app should have opened with your message
+                      pre-filled. Press send in your email app to deliver it
+                      to us. If nothing opened, please email us directly at
+                      techsuli415502@gmail.com.
                     </p>
                     <button
                       onClick={() => setSent(false)}
                       className="mt-3 inline-flex h-9 items-center rounded-md border border-border bg-card px-4 text-sm font-medium hover:bg-accent"
                     >
-                      Send another message
+                      Write another message
                     </button>
                   </div>
                 </div>
@@ -171,7 +202,9 @@ export function ContactView() {
                     </p>
                   ) : (
                     <p id="message-help" className="text-xs text-muted-foreground">
-                      Please keep your message clear and short. Max 4000 characters.
+                      When you press send, your email app opens with this
+                      message ready to go. We do not store your message on
+                      this site. Max 4000 characters.
                     </p>
                   )}
                 </div>

@@ -10,7 +10,7 @@ export function PrivacyView() {
   return (
     <PageShell
       title="Privacy Policy"
-      subtitle="What data is used by the Camel Calculator and what is not. Last updated on October 1, 2026."
+      subtitle="What data is used by the Camel Calculator and what is not. Last updated on October 10, 2026."
       breadcrumbs={[
         { label: "Home", view: "home" },
         { label: "Privacy Policy" },
@@ -24,9 +24,10 @@ export function PrivacyView() {
           you close or refresh the page, that data is gone.
         </p>
         <p>
-          The contact form on this site sends a message to our email. That
-          message includes only what you type in the form (your name, your
-          email, and your message). We use that data only to reply to you.
+          The contact form on this site opens your own email app with your
+          message pre-filled. Your message is sent from your email account
+          straight to our inbox. The form itself does not store any data on
+          this site or its servers.
         </p>
       </ContentBlock>
 
@@ -97,15 +98,22 @@ export function PrivacyView() {
 
       <ContentBlock title="Contact form data">
         <p>
-          The contact form on this site lets you send us a message. The form
-          asks for your name, your email, and your message text. When you
-          submit the form, that data is sent to our email so we can reply.
+          The contact form on this site lets you write a message to us. The
+          form asks for your name, your email, and your message text. When
+          you press send, the form opens your own email app with your
+          message pre-filled. You then press send inside your email app to
+          deliver the message to our inbox at techsuli415502@gmail.com.
         </p>
         <p>
-          We keep your contact message only for as long as we need it to
-          resolve your question. We do not add you to a marketing list. We do
-          not sell your contact details. If you ask us to delete your
-          message, we will do so within a reasonable time.
+          The form itself does not store your name, email, or message on
+          this site or on any server we control. Your message is sent from
+          your email account, through your email provider, to our inbox.
+        </p>
+        <p>
+          Once your email reaches our inbox, we keep it only for as long as
+          we need to resolve your question. We do not add you to a marketing
+          list. We do not sell your contact details. If you ask us to
+          delete your message, we will do so within a reasonable time.
         </p>
       </ContentBlock>
 

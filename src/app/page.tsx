@@ -12,45 +12,136 @@ import { ContactView } from "@/components/site/views/ContactView";
 import { PrivacyView } from "@/components/site/views/PrivacyView";
 import { TermsView } from "@/components/site/views/TermsView";
 
+const SITE_URL = "https://camelcalculator.vercel.app";
+
+const VIEW_META: Record<
+  string,
+  { title: string; description: string; canonical: string; ogType: string }
+> = {
+  home: {
+    title: "Camel Calculator | How Many Camels Are You Worth?",
+    description:
+      "A fun camel calculator that turns a few simple details about you into a playful camel score. Try the online camel value test and find out how many camels you are worth.",
+    canonical: SITE_URL + "/",
+    ogType: "website",
+  },
+  about: {
+    title: "About the Camel Calculator | Free Fun Online Tool",
+    description:
+      "Learn about the Camel Calculator: a free, friendly online tool that gives you a fun camel value based on simple details. Built and written by Jacob Moses.",
+    canonical: SITE_URL + "/#about",
+    ogType: "article",
+  },
+  "how-it-works": {
+    title: "How the Camel Calculator Works | Scoring Explained",
+    description:
+      "How the Camel Calculator works: your input, the scoring system, the result, and why the camel score is only for fun. A clear step by step breakdown.",
+    canonical: SITE_URL + "/#how-it-works",
+    ogType: "article",
+  },
+  faq: {
+    title: "Camel Calculator FAQ | Common Questions Answered",
+    description:
+      "Quick answers to common questions about the camel calculator, the camel score, how it works, and what the result means. 14 clear answers in one place.",
+    canonical: SITE_URL + "/#faq",
+    ogType: "article",
+  },
+  contact: {
+    title: "Contact the Camel Calculator Team",
+    description:
+      "Contact the Camel Calculator team with feedback, questions, or bug reports. We read every message and reply as soon as we can.",
+    canonical: SITE_URL + "/#contact",
+    ogType: "website",
+  },
+  privacy: {
+    title: "Privacy Policy | Camel Calculator",
+    description:
+      "Privacy Policy for the Camel Calculator. The tool runs in your browser and does not store your answers. Read what data is used and what is not.",
+    canonical: SITE_URL + "/#privacy",
+    ogType: "website",
+  },
+  terms: {
+    title: "Terms of Use | Camel Calculator",
+    description:
+      "Terms of Use for the Camel Calculator. The site is for fun and entertainment, and results are not real measures of value.",
+    canonical: SITE_URL + "/#terms",
+    ogType: "website",
+  },
+};
+
+function upsertMeta(selector: string, attr: string, value: string, createAttrs?: Record<string, string>) {
+  let tag = document.querySelector(selector);
+  if (!tag) {
+    tag = document.createElement("meta");
+    // Set the identifying attr first
+    for (const [k, v] of Object.entries(createAttrs ?? {})) {
+      tag.setAttribute(k, v);
+    }
+    document.head.appendChild(tag);
+  }
+  tag.setAttribute(attr, value);
+}
+
+function upsertLink(rel: string, href: string) {
+  let link = document.querySelector(`link[rel="${rel}"]`);
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", rel);
+    document.head.appendChild(link);
+  }
+  link.setAttribute("href", href);
+}
+
 export default function Home() {
   const view = useSiteStore((s) => s.view);
+  const syncFromHash = useSiteStore((s) => s.syncFromHash);
 
-  // Update the document title when the active view changes for basic SEO.
+  // On mount, read the URL hash so deep links like /#faq open the right view.
   React.useEffect(() => {
-    const titles: Record<typeof view, string> = {
-      home: "Camel Calculator | How Many Camels Are You Worth?",
-      about: "About | Camel Calculator",
-      "how-it-works": "How It Works | Camel Calculator",
-      faq: "FAQ | Camel Calculator",
-      contact: "Contact | Camel Calculator",
-      privacy: "Privacy Policy | Camel Calculator",
-      terms: "Terms of Use | Camel Calculator",
-    };
-    document.title = titles[view];
+    syncFromHash(window.location.hash);
+  }, []);
 
-    const metaDesc: Record<typeof view, string> = {
-      home:
-        "A fun camel calculator that turns a few simple details about you into a playful camel score. Try the online camel value test and find out how many camels you are worth.",
-      about:
-        "Learn about the Camel Calculator: a free, friendly online tool that gives you a fun camel value based on simple details. Built and written by Jacob Moses.",
-      "how-it-works":
-        "How the Camel Calculator works: your input, the scoring system, the result, and why the camel score is only for fun.",
-      faq:
-        "Quick answers to common questions about the camel calculator, the camel score, how it works, and what the result means.",
-      contact:
-        "Contact the Camel Calculator team with feedback, questions, or bug reports. We read every message.",
-      privacy:
-        "Privacy Policy for the Camel Calculator. Learn what data is used, what is stored, and what is not.",
-      terms:
-        "Terms of Use for the Camel Calculator. The site is for fun and entertainment, and results are not real measures of value.",
-    };
-    let tag = document.querySelector('meta[name="description"]');
-    if (!tag) {
-      tag = document.createElement("meta");
-      tag.setAttribute("name", "description");
-      document.head.appendChild(tag);
+  // Update the document title, meta description, canonical URL, and OG tags
+  // when the active view changes. This keeps each "page" of the SPA
+  // indexable by search engines with its own metadata.
+  React.useEffect(() => {
+    const meta = VIEW_META[view];
+    if (!meta) return;
+    document.title = meta.title;
+
+    upsertMeta('meta[name="description"]', "content", meta.description, {
+      name: "description",
+    });
+    upsertMeta('meta[property="og:title"]', "content", meta.title, {
+      property: "og:title",
+    });
+    upsertMeta('meta[property="og:description"]', "content", meta.description, {
+      property: "og:description",
+    });
+    upsertMeta('meta[property="og:url"]', "content", meta.canonical, {
+      property: "og:url",
+    });
+    upsertMeta('meta[property="og:type"]', "content", meta.ogType, {
+      property: "og:type",
+    });
+    upsertMeta('meta[name="twitter:title"]', "content", meta.title, {
+      name: "twitter:title",
+    });
+    upsertMeta('meta[name="twitter:description"]', "content", meta.description, {
+      name: "twitter:description",
+    });
+    upsertLink("canonical", meta.canonical);
+  }, [view]);
+
+  // Keep the URL hash in sync with the current view so users can share or
+  // bookmark a deep link to a specific page.
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const targetHash = view === "home" ? "" : `#${view}`;
+    if (window.location.hash !== targetHash) {
+      const newUrl = window.location.pathname + targetHash + window.location.search;
+      window.history.replaceState(null, "", newUrl);
     }
-    tag.setAttribute("content", metaDesc[view]);
   }, [view]);
 
   return (
@@ -69,3 +160,4 @@ export default function Home() {
     </div>
   );
 }
+

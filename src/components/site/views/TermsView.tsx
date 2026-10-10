@@ -10,7 +10,7 @@ export function TermsView() {
   return (
     <PageShell
       title="Terms of Use"
-      subtitle="The rules for using the Camel Calculator. Please read them before you use the tool. Last updated on October 1, 2026."
+      subtitle="The rules for using the Camel Calculator. Please read them before you use the tool. Last updated on October 10, 2026."
       breadcrumbs={[
         { label: "Home", view: "home" },
         { label: "Terms of Use" },

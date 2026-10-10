@@ -4,4 +4,4 @@ Allow: /
 
 # Block nothing. The whole site is public and crawlable.
 
-Sitemap: https://camelcalculator.example/sitemap.xml
+Sitemap: https://camelcalculator.vercel.app/sitemap.xml

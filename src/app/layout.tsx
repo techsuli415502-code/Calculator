@@ -15,7 +15,7 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const SITE_URL = "https://camelcalculator.example";
+const SITE_URL = "https://camelcalculator.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -43,9 +43,13 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/favicon.svg" }],
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+  manifest: "/manifest.json",
   openGraph: {
     title: "Camel Calculator | How Many Camels Are You Worth?",
     description:
@@ -53,14 +57,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Camel Calculator",
     type: "website",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Camel Calculator" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Camel Calculator - How many camels are you worth?" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Camel Calculator | How Many Camels Are You Worth?",
     description:
       "A fun camel calculator that gives you a playful camel score based on a few simple details.",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -83,7 +87,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="canonical" href={SITE_URL} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -136,7 +139,7 @@ export default function RootLayout({
               jobTitle: "Content Specialist",
               description:
                 "Content specialist who writes and builds simple, friendly web tools for fun and entertainment.",
-              url: `${SITE_URL}/about`,
+              url: `${SITE_URL}/#about`,
             }),
           }}
         />
